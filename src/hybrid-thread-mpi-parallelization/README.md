@@ -12,6 +12,7 @@ to use a hybrid parallelization approach, where the memory is shared within a no
 and distributed across nodes.
 
 Considering the following problem:
+
 $$
 \begin{equation*}
     \begin{cases}
