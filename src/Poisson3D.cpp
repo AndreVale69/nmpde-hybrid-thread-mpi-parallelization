@@ -232,7 +232,7 @@ Poisson3D::solve()
   // The linear solver is basically the same as in serial, in terms of
   // interface: we only have to use appropriate classes, compatible with
   // Trilinos linear algebra.
-  SolverCG<TrilinosWrappers::MPI::Vector> solver(solver_control);
+  SolverGMRES<TrilinosWrappers::MPI::Vector> solver(solver_control);
 
   TrilinosWrappers::PreconditionSSOR preconditioner;
   preconditioner.initialize(
@@ -240,7 +240,7 @@ Poisson3D::solve()
 
   pcout << "  Solving the linear system" << std::endl;
   solver.solve(system_matrix, solution, system_rhs, preconditioner);
-  pcout << "  " << solver_control.last_step() << " CG iterations" << std::endl;
+  pcout << "  " << solver_control.last_step() << " GMRES iterations" << std::endl;
 }
 
 void
